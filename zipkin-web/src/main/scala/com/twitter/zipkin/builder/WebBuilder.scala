@@ -29,7 +29,7 @@ case class WebBuilder(
   queryClientBuilder: Builder[ClientBuilder.Complete[ThriftClientRequest, Array[Byte]]],
   pinTtl: Duration = 30.days,
   resourcePathPrefix: String = "/public",
-  serverBuilder: ZipkinServerBuilder = ZipkinServerBuilder(8080, 9902)
+  serverBuilder: ZipkinServerBuilder = ZipkinServerBuilder(8081, 9902)
 ) extends Builder[RuntimeEnvironment => ZipkinWeb] {
 
   /* Map dirname to content type */

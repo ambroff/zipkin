@@ -20,4 +20,4 @@ import java.net.{InetSocketAddress, InetAddress}
 val queryClient = QueryClient.static(new InetSocketAddress(InetAddress.getLocalHost, 9411)) map {
   _.tracerFactory(ZipkinTracer())
 }
-WebBuilder("http://localhost:8080/", queryClient)
+WebBuilder("http://localhost:8081/", queryClient)

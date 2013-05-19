@@ -14,14 +14,19 @@
  * limitations under the License.
  */
 import com.twitter.zipkin.builder.QueryServiceBuilder
-import com.twitter.zipkin.cassandra
+// import com.twitter.zipkin.cassandra
+import com.twitter.zipkin.redis
 import com.twitter.zipkin.storage.Store
 
 // development mode.
-val keyspaceBuilder = cassandra.Keyspace.static()
+// val keyspaceBuilder = cassandra.Keyspace.static()
+// val storeBuilder = Store.Builder(
+//   cassandra.StorageBuilder(keyspaceBuilder),
+//   cassandra.IndexBuilder(keyspaceBuilder),
+//   cassandra.AggregatesBuilder(keyspaceBuilder))
 val storeBuilder = Store.Builder(
-  cassandra.StorageBuilder(keyspaceBuilder),
-  cassandra.IndexBuilder(keyspaceBuilder),
-  cassandra.AggregatesBuilder(keyspaceBuilder))
+  redis.StorageBuilder("0.0.0.0", 6379),
+  redis.IndexBuilder("0.0.0.0", 6379)
+)
 
 QueryServiceBuilder(storeBuilder)

@@ -55,4 +55,3 @@ struct Span {
   8: list<BinaryAnnotation> binary_annotations // any binary annotations
   9: optional bool debug = 0       // if true, we DEMAND that this span passes all samplers
 }
-
