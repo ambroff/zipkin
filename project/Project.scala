@@ -81,7 +81,7 @@ object Zipkin extends Build {
         </dependencies>,
       mergeStrategy in assembly := {
         case inf if inf.startsWith("META-INF/") || inf.startsWith("project.clj") => MergeStrategy.discard
-        case _ => MergeStrategy.deduplicate
+        case _ => MergeStrategy.first
       }
     ).dependsOn(thrift)
 
@@ -104,7 +104,7 @@ object Zipkin extends Build {
 
     mergeStrategy in assembly := {
       case inf if inf.startsWith("META-INF/") || inf.startsWith("project.clj") => MergeStrategy.discard
-      case _ => MergeStrategy.deduplicate
+      case _ => MergeStrategy.first
     }
   ).dependsOn(thrift)
 
